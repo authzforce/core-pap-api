@@ -21,20 +21,32 @@
  */
 package org.ow2.authzforce.core.pap.api.dao;
 
+import java.util.List;
+
+import oasis.names.tc.xacml._3_0.core.schema.wd_17.IdReferenceType;
 
 /**
- * Writable domain properties, as opposed to read-only properties
+ * Readable PDP properties, i.e. writable PDP properties and read-only
+ * properties
  *
  */
-public interface WritableDomainProperties
+public interface ReadablePdpProperties extends WritablePdpProperties
 {
 	/**
-	 * @return externalID as defined by the client when creating the domain
+	 * Get time the PDP was created or last time the PDP was modified
+	 * 
+	 * @return time of last creation/modification of the PDP in UTC milliseconds
+	 *         from the epoch
 	 */
-	String getExternalId();
+	long getLastModified();
 
 	/**
-	 * @return domain's description
+	 * Get list of enabled/required policies, i.e. the actual root policy and
+	 * all policies referenced directly/indirectly from the root policy via
+	 * XACML PolicySetIdReference
+	 * 
+	 * @return policies enabled (and actually required for evaluation) by the
+	 *         PDP
 	 */
-	String getDescription();
+	List<IdReferenceType> getEnabledPolicies();
 }

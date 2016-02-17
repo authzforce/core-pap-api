@@ -21,20 +21,18 @@
  */
 package org.ow2.authzforce.core.pap.api.dao;
 
+import oasis.names.tc.xacml._3_0.core.schema.wd_17.IdReferenceType;
 
 /**
  * Writable domain properties, as opposed to read-only properties
  *
  */
-public interface WritableDomainProperties
+public interface WritablePdpProperties
 {
 	/**
-	 * @return externalID as defined by the client when creating the domain
+	 * Get PDP's root policy reference (ID and version constraints)
+	 * 
+	 * @return root policy reference
 	 */
-	String getExternalId();
-
-	/**
-	 * @return domain's description
-	 */
-	String getDescription();
+	IdReferenceType getRootPolicyRef();
 }

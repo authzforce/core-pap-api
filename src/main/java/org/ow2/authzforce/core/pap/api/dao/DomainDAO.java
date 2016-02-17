@@ -50,7 +50,7 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	ReadableDomainProperties getDomainProperties() throws IOException;
 
 	/**
-	 * Update domain properties/metadata
+	 * Update domain's global properties/metadata
 	 * 
 	 * @param properties
 	 *            new domain properties
@@ -65,6 +65,35 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	ReadableDomainProperties setDomainProperties(
 			WritableDomainProperties properties) throws IOException,
 			IllegalArgumentException;
+
+	/**
+	 * Get domain's PDP-specific properties, other than policies and attribute
+	 * providers
+	 * 
+	 * @return PDP properties
+	 * @throws IOException
+	 *             I/O error getting domain properties from domain repository
+	 * 
+	 */
+	ReadablePdpProperties getOtherPdpProperties() throws IOException;
+
+	/**
+	 * Update domain's PDP-specific properties, other than policies and
+	 * attribute providers
+	 * 
+	 * @param properties
+	 *            new PDP properties
+	 * @return new PDP properties
+	 * 
+	 * @throws IOException
+	 *             I/O error updating domain's PDP properties in domain
+	 *             repository
+	 * @throws IllegalArgumentException
+	 *             invalid properties
+	 * 
+	 */
+	ReadablePdpProperties setOtherPdpProperties(WritablePdpProperties properties)
+			throws IOException, IllegalArgumentException;
 
 	/**
 	 * Remove the domain from the domain repository
