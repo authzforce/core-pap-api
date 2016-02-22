@@ -87,7 +87,10 @@ public interface DomainsDAO<C extends DomainDAOClient<?>>
 	 *            domain ID
 	 * @return DAO for domain identified by {@code domainId}, or null if no such
 	 *         domain
+	 * @throws IOException
+	 *             I/O error getting domain data from Data layer (domain
+	 *             repository/database)
 	 */
-	C getDomainDAOClient(String domainId);
+	C getDomainDAOClient(String domainId) throws IOException;
 
 }
