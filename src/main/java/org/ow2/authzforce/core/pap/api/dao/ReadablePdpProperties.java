@@ -26,8 +26,7 @@ import java.util.List;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.IdReferenceType;
 
 /**
- * Readable PDP properties, i.e. writable PDP properties and read-only
- * properties
+ * Readable PDP properties, i.e. writable PDP properties and read-only properties
  *
  */
 public interface ReadablePdpProperties extends WritablePdpProperties
@@ -35,18 +34,14 @@ public interface ReadablePdpProperties extends WritablePdpProperties
 	/**
 	 * Get time the PDP was created or last time the PDP was modified
 	 * 
-	 * @return time of last creation/modification of the PDP in UTC milliseconds
-	 *         from the epoch
+	 * @return time of last creation/modification of the PDP in UTC milliseconds from the epoch
 	 */
 	long getLastModified();
 
 	/**
-	 * Get list of enabled/required policies, i.e. the actual root policy and
-	 * all policies referenced directly/indirectly from the root policy via
-	 * XACML PolicySetIdReference
+	 * Get policies referenced directly/indirectly from the root policy via XACML PolicySetIdReference
 	 * 
-	 * @return policies enabled (and actually required for evaluation) by the
-	 *         PDP
+	 * @return references to policies (in)directly referenced from the root policy; empty if none
 	 */
-	List<IdReferenceType> getEnabledPolicies();
+	List<IdReferenceType> getRefPolicyRefs();
 }
