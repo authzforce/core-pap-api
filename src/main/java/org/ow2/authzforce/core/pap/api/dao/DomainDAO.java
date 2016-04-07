@@ -66,17 +66,17 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 			IllegalArgumentException;
 
 	/**
-	 * Get domain's PDP-specific properties, other than policies and attribute providers
+	 * Get domain's PDP-specific properties, other than policy references and attribute providers
 	 * 
 	 * @return PDP properties
 	 * @throws IOException
-	 *             I/O error getting domain properties from domain repository
+	 *             I/O error getting PDP properties from domain repository
 	 * 
 	 */
 	ReadablePdpProperties getOtherPdpProperties() throws IOException;
 
 	/**
-	 * Update domain's PDP-specific properties, other than policies and attribute providers
+	 * Update domain's PDP-specific properties, other than policy references and attribute providers
 	 * 
 	 * @param properties
 	 *            new PDP properties
@@ -89,6 +89,32 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	 * 
 	 */
 	ReadablePdpProperties setOtherPdpProperties(WritablePdpProperties properties) throws IOException,
+			IllegalArgumentException;
+	
+	/**
+	 * Get domain's PRP-specific properties, other than policies
+	 * 
+	 * @return PRP properties
+	 * @throws IOException
+	 *             I/O error getting PRP properties from domain repository
+	 * 
+	 */
+	PrpRWProperties getOtherPrpProperties() throws IOException;
+
+	/**
+	 * Update domain's PRP-specific properties, other than policies
+	 * 
+	 * @param properties
+	 *            new PRP properties
+	 * @return new PRP properties
+	 * 
+	 * @throws IOException
+	 *             I/O error updating domain's PRP properties in domain repository
+	 * @throws IllegalArgumentException
+	 *             invalid properties
+	 * 
+	 */
+	PrpRWProperties setOtherPrpProperties(PrpRWProperties properties) throws IOException,
 			IllegalArgumentException;
 
 	/**

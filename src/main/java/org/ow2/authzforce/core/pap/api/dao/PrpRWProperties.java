@@ -21,28 +21,17 @@
  */
 package org.ow2.authzforce.core.pap.api.dao;
 
-import java.util.List;
-
-import oasis.names.tc.xacml._3_0.core.schema.wd_17.IdReferenceType;
-
 /**
- * Writable domain properties, as opposed to read-only properties
+ * PRP (Policy Repository) properties
  *
  */
-public interface WritablePdpProperties
+public interface PrpRWProperties
 {
-	/**
-	 * Get PDP's root policy reference (ID and version constraints)
-	 * 
-	 * @return root policy reference
-	 */
-	IdReferenceType getRootPolicyRef();
 
-	/**
-	 * Get PDP's feature IDs. Such identifiers identify implementation-specific features enabled/supported by the PDP (and easily identified by an ID without
-	 * any further configuration parameter), e.g. support for XACML Multiple Decision Profile, extra XACML function, etc.
-	 * 
-	 * @return enabled PDP features
-	 */
-	List<String> getFeatureIDs();
+	boolean isVersionRollingEnabled();
+
+	int getMaxVersionCountPerPolicy();
+
+	int getMaxPolicyCountPerDomain();
+
 }
