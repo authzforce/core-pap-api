@@ -50,7 +50,7 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	ReadableDomainProperties getDomainProperties() throws IOException;
 
 	/**
-	 * Update domain properties/metadata
+	 * Update domain's global properties/metadata
 	 * 
 	 * @param properties
 	 *            new domain properties
@@ -62,7 +62,60 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	 *             invalid properties
 	 * 
 	 */
-	ReadableDomainProperties setDomainProperties(WritableDomainProperties properties) throws IOException, IllegalArgumentException;
+	ReadableDomainProperties setDomainProperties(WritableDomainProperties properties) throws IOException,
+			IllegalArgumentException;
+
+	/**
+	 * Get domain's PDP-specific properties, other than policy references and attribute providers
+	 * 
+	 * @return PDP properties
+	 * @throws IOException
+	 *             I/O error getting PDP properties from domain repository
+	 * 
+	 */
+	ReadablePdpProperties getOtherPdpProperties() throws IOException;
+
+	/**
+	 * Update domain's PDP-specific properties, other than policy references and attribute providers
+	 * 
+	 * @param properties
+	 *            new PDP properties
+	 * @return new PDP properties
+	 * 
+	 * @throws IOException
+	 *             I/O error updating domain's PDP properties in domain repository
+	 * @throws IllegalArgumentException
+	 *             invalid properties
+	 * 
+	 */
+	ReadablePdpProperties setOtherPdpProperties(WritablePdpProperties properties) throws IOException,
+			IllegalArgumentException;
+	
+	/**
+	 * Get domain's PRP-specific properties, other than policies
+	 * 
+	 * @return PRP properties
+	 * @throws IOException
+	 *             I/O error getting PRP properties from domain repository
+	 * 
+	 */
+	PrpRWProperties getOtherPrpProperties() throws IOException;
+
+	/**
+	 * Update domain's PRP-specific properties, other than policies
+	 * 
+	 * @param properties
+	 *            new PRP properties
+	 * @return new PRP properties
+	 * 
+	 * @throws IOException
+	 *             I/O error updating domain's PRP properties in domain repository
+	 * @throws IllegalArgumentException
+	 *             invalid properties
+	 * 
+	 */
+	PrpRWProperties setOtherPrpProperties(PrpRWProperties properties) throws IOException,
+			IllegalArgumentException;
 
 	/**
 	 * Remove the domain from the domain repository
@@ -96,7 +149,8 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	 *             invalid attribute providers (configuration)
 	 * 
 	 */
-	List<AbstractAttributeProvider> setAttributeProviders(List<AbstractAttributeProvider> attributeProviders) throws IOException, IllegalArgumentException;
+	List<AbstractAttributeProvider> setAttributeProviders(List<AbstractAttributeProvider> attributeProviders)
+			throws IOException, IllegalArgumentException;
 
 	/**
 	 * Get IDs of domain's policies
@@ -112,11 +166,13 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	 * 
 	 * @param policy
 	 *            XACML PolicySet
-	 * @return Policy already existing with same ID/Version in the domain's policy repository, if any (conflict); or null if there isn't any (no conflict)
+	 * @return Policy already existing with same ID/Version in the domain's policy repository, if any (conflict); or
+	 *         null if there isn't any (no conflict)
 	 * @throws IOException
 	 *             I/O error adding policy to domain in domain repository
 	 * @throws IllegalArgumentException
-	 *             invalid policy, because of invalid syntax or unsupported feature, or - in general - resulting in invalid PDP
+	 *             invalid policy, because of invalid syntax or unsupported feature, or - in general - resulting in
+	 *             invalid PDP
 	 * @throws TooManyPoliciesException
 	 *             max allowed number of policies is already reached
 	 */
@@ -134,12 +190,12 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	/**
 	 * Get the domain's Policy Decision Point (based on policies and attribute providers)
 	 * 
-	 * @return domain PDP
+	 * @return domain PDP; null if the PDP is in erroneous state
 	 */
 	PDP getPDP();
 
 	/**
-	 * Get all versions of the policy
+	 * Get all versions of the policy ordered from latest to oldest
 	 * 
 	 * @param policyId
 	 *            policy ID
@@ -151,6 +207,18 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	NavigableSet<PolicyVersion> getPolicyVersions(String policyId) throws IOException;
 
 	/**
+	 * Get latest version of a given policy
+	 * 
+	 * @param policyId
+	 *            policy ID
+	 * 
+	 * @return policy version; null if no such policy in the policy repository
+	 * @throws IOException
+	 *             I/O error getting policy version from the policy repository
+	 */
+	PolicyVersion getLatestPolicyVersionId(String policyId) throws IOException;
+
+	/**
 	 * Remove the policy (all versions) from the domain's policy repository
 	 * 
 	 * @param policyId
@@ -159,7 +227,8 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	 * @throws IOException
 	 *             I/O error removing policy (all versions) from the policy repository
 	 * @throws IllegalArgumentException
-	 *             if it (removing this policy) results in an invalid PDP (when referenced directly or indirectly from the root policy)
+	 *             if it (removing this policy) results in an invalid PDP (when referenced directly or indirectly from
+	 *             the root policy)
 	 */
 	NavigableSet<PolicyVersion> removePolicy(String policyId) throws IOException, IllegalArgumentException;
 
@@ -169,11 +238,12 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	 * @param policyId
 	 *            policy ID
 	 * 
-	 * @param version
+	 * @param policyVersion
 	 *            policy version ID
-	 * @return DAO for policy version identified by {@code version}, or null if no such policy or no such version of the policy
+	 * @return DAO for policy version identified by {@code version}, or null if no such policy or no such version of the
+	 *         policy
 	 */
-	V getVersionDAOClient(String policyId, String version);
+	V getVersionDAOClient(String policyId, PolicyVersion policyVersion);
 
 	/**
 	 * Get policy version
@@ -181,28 +251,31 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	 * @param policyId
 	 *            policy ID
 	 * 
-	 * @param version
+	 * @param versionId
 	 *            policy version ID
 	 * @return policy version; null if no such policy, or no such version of the policy in the policy repository
 	 * @throws IOException
 	 *             I/O error getting policy version from the policy repository
 	 */
-	PolicySet getPolicyVersion(String policyId, String version) throws IOException;
+	PolicySet getPolicyVersion(String policyId, PolicyVersion versionId) throws IOException;
 
 	/**
-	 * Remove a specific version of the policy from the policy repository
+	 * Remove a specific version of the policy from the policy repository. If this is the last remaining version of the
+	 * policy, this must have the same effect as {@link #removePolicy(String)}.
 	 * 
 	 * @param policyId
 	 *            policy ID
 	 * 
-	 * @param version
+	 * @param versionId
 	 *            policy version ID
 	 * @return removed policy version; null if no such policy or no such version in the policy repository
 	 * @throws IOException
 	 *             I/O error removing policy version from the policy repository
 	 * @throws IllegalArgumentException
-	 *             if it (removing this policy version) results in an invalid PDP (when referenced directly or indirectly from the root policy)
+	 *             if it (removing this policy version) results in an invalid PDP (when referenced directly or
+	 *             indirectly from the root policy)
 	 */
-	PolicySet removePolicyVersion(String policyId, String version) throws IOException, IllegalArgumentException;
+	PolicySet removePolicyVersion(String policyId, PolicyVersion versionId) throws IOException,
+			IllegalArgumentException;
 
 }

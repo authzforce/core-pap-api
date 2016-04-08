@@ -18,6 +18,8 @@
  */
 package org.ow2.authzforce.core.pap.api.dao;
 
+import org.ow2.authzforce.core.pdp.api.PolicyVersion;
+
 /**
  * Policy DAO client/consumer
  *
@@ -32,6 +34,7 @@ public interface PolicyVersionDAOClient
 	 */
 	interface Factory<C extends PolicyVersionDAOClient>
 	{
-		C getInstance(String policyId, String versionId, DomainDAO<?, ?> domainDAO);
+		C getInstance(String policyId, PolicyVersion versionId,
+				DomainDAO<?, ?> domainDAO);
 	}
 }
