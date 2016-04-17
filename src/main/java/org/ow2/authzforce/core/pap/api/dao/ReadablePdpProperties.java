@@ -43,12 +43,12 @@ public interface ReadablePdpProperties extends WritablePdpProperties
 	 * 
 	 * @return actual root policy reference
 	 */
-	IdReferenceType getRootPolicyRef();
+	IdReferenceType getApplicableRootPolicyRef();
 
 	/**
 	 * Get applicable policies referenced directly/indirectly from the root policy (returned by {@link #getRootPolicyRef()}) via XACML PolicySetIdReference
 	 * 
 	 * @return references to policies (in)directly referenced from the root policy in force; empty if none
 	 */
-	List<IdReferenceType> getRefPolicyRefs();
+	List<IdReferenceType> getApplicableRefPolicyRefs();
 }
