@@ -32,11 +32,11 @@ import oasis.names.tc.xacml._3_0.core.schema.wd_17.IdReferenceType;
 public interface WritablePdpProperties
 {
 	/**
-	 * Get PDP's root policy reference (ID and version constraints)
+	 * Get PDP's root policy reference expression (ID and version constraints)
 	 * 
-	 * @return root policy reference
+	 * @return root policy reference expression
 	 */
-	IdReferenceType getRootPolicyRef();
+	IdReferenceType getRootPolicyRefExpression();
 
 	/**
 	 * Get PDP's feature IDs. Such identifiers identify implementation-specific features enabled/supported by the PDP (and easily identified by an ID without
