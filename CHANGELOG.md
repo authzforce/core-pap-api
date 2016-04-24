@@ -1,7 +1,7 @@
 # Change log
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
-## Unreleased
+## 5.0.0
 ### Changed
 - Replaced WritablePdpProperties#getRootPolicyRef() method with WritablePdpProperties#getRootPolicyRefExpression() and ReadablePdpProperties#getApplicableRootPolicyRef() to make the clear distinction between the writable rootPolicyRef pattern expression (with Version/EarliestVersion/LatestVersion patterns) used as input to PDP configuration, and the read-only rootPolicyRef resulting from the evaluation of this expression - fixed root policy ID and version - that is made applicable by the PDP during evaluation
 - Renamed ReadablePdpProperties#getRefPolicyRef()) method to #getApplicableRootPolicyRef() to follow the same naming pattern as #getApplicableRootPolicyRef()
