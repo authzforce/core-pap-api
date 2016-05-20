@@ -28,10 +28,25 @@ package org.ow2.authzforce.core.pap.api.dao;
 public interface PrpRWProperties
 {
 
-	boolean isVersionRollingEnabled();
+	/**
+	 * get maximum number of policies per domain
+	 * 
+	 * @return max policy count
+	 */
+	int getMaxPolicyCountPerDomain();
 
+	/**
+	 * get maximum number of versions per policy
+	 * 
+	 * @return max version count
+	 */
 	int getMaxVersionCountPerPolicy();
 
-	int getMaxPolicyCountPerDomain();
+	/**
+	 * get state (enabled/disabled) of version rolling feature, i.e. automatic removal of oldest versions, when max version count about to be exceeded
+	 * 
+	 * @return true iff version rolling is enabled
+	 */
+	boolean isVersionRollingEnabled();
 
 }

@@ -26,7 +26,7 @@ import java.util.List;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.IdReferenceType;
 
 /**
- * Writable domain properties, as opposed to read-only properties
+ * Writable PDP properties, as opposed to read-only properties
  *
  */
 public interface WritablePdpProperties
@@ -39,10 +39,10 @@ public interface WritablePdpProperties
 	IdReferenceType getRootPolicyRefExpression();
 
 	/**
-	 * Get PDP's feature IDs. Such identifiers identify implementation-specific features enabled/supported by the PDP (and easily identified by an ID without
-	 * any further configuration parameter), e.g. support for XACML Multiple Decision Profile, extra XACML function, etc.
+	 * Get PDP features. Such identifiers identify implementation-specific features supported by the PDP (and easily identified by an ID and possibly a type, without any further configuration
+	 * parameter), e.g. support for XACML Multiple Decision Profile, other XACML extensions such as functions, combining algorithms, datatypes, etc.
 	 * 
-	 * @return enabled PDP features
+	 * @return supported PDP features with status (enabled=true/false)
 	 */
-	List<String> getFeatureIDs();
+	List<PdpFeature> getFeatures();
 }

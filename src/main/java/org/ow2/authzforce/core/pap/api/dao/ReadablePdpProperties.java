@@ -37,7 +37,7 @@ public interface ReadablePdpProperties extends WritablePdpProperties
 	 * @return time of last creation/modification of the PDP in UTC milliseconds from the epoch
 	 */
 	long getLastModified();
-	
+
 	/**
 	 * Get PDP's applicable root policy reference, resolved from {@link #getRootPolicyRefExpression()}
 	 * 
@@ -46,7 +46,7 @@ public interface ReadablePdpProperties extends WritablePdpProperties
 	IdReferenceType getApplicableRootPolicyRef();
 
 	/**
-	 * Get applicable policies referenced directly/indirectly from the root policy (returned by {@link #getRootPolicyRef()}) via XACML PolicySetIdReference
+	 * Get applicable policies referenced directly/indirectly from the root policy (returned by {@link #getRootPolicyRefExpression()}) via XACML PolicySetIdReference
 	 * 
 	 * @return references to policies (in)directly referenced from the root policy in force; empty if none
 	 */
