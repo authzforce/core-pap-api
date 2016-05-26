@@ -24,7 +24,7 @@ import java.util.Set;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.PolicySet;
 
 import org.ow2.authzforce.core.pdp.api.PDP;
-import org.ow2.authzforce.core.pdp.api.PolicyVersion;
+import org.ow2.authzforce.core.pdp.api.policy.PolicyVersion;
 import org.ow2.authzforce.xmlns.pdp.ext.AbstractAttributeProvider;
 
 /**
@@ -62,8 +62,7 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	 *             invalid properties
 	 * 
 	 */
-	ReadableDomainProperties setDomainProperties(WritableDomainProperties properties) throws IOException,
-			IllegalArgumentException;
+	ReadableDomainProperties setDomainProperties(WritableDomainProperties properties) throws IOException, IllegalArgumentException;
 
 	/**
 	 * Get domain's PDP-specific properties, other than policy references and attribute providers
@@ -88,9 +87,8 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	 *             invalid properties
 	 * 
 	 */
-	ReadablePdpProperties setOtherPdpProperties(WritablePdpProperties properties) throws IOException,
-			IllegalArgumentException;
-	
+	ReadablePdpProperties setOtherPdpProperties(WritablePdpProperties properties) throws IOException, IllegalArgumentException;
+
 	/**
 	 * Get domain's PRP-specific properties, other than policies
 	 * 
@@ -114,8 +112,7 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	 *             invalid properties
 	 * 
 	 */
-	PrpRWProperties setOtherPrpProperties(PrpRWProperties properties) throws IOException,
-			IllegalArgumentException;
+	PrpRWProperties setOtherPrpProperties(PrpRWProperties properties) throws IOException, IllegalArgumentException;
 
 	/**
 	 * Remove the domain from the domain repository
@@ -149,8 +146,7 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	 *             invalid attribute providers (configuration)
 	 * 
 	 */
-	List<AbstractAttributeProvider> setAttributeProviders(List<AbstractAttributeProvider> attributeProviders)
-			throws IOException, IllegalArgumentException;
+	List<AbstractAttributeProvider> setAttributeProviders(List<AbstractAttributeProvider> attributeProviders) throws IOException, IllegalArgumentException;
 
 	/**
 	 * Get IDs of domain's policies
@@ -166,13 +162,11 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	 * 
 	 * @param policy
 	 *            XACML PolicySet
-	 * @return Policy already existing with same ID/Version in the domain's policy repository, if any (conflict); or
-	 *         null if there isn't any (no conflict)
+	 * @return Policy already existing with same ID/Version in the domain's policy repository, if any (conflict); or null if there isn't any (no conflict)
 	 * @throws IOException
 	 *             I/O error adding policy to domain in domain repository
 	 * @throws IllegalArgumentException
-	 *             invalid policy, because of invalid syntax or unsupported feature, or - in general - resulting in
-	 *             invalid PDP
+	 *             invalid policy, because of invalid syntax or unsupported feature, or - in general - resulting in invalid PDP
 	 * @throws TooManyPoliciesException
 	 *             max allowed number of policies is already reached
 	 */
@@ -227,8 +221,7 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	 * @throws IOException
 	 *             I/O error removing policy (all versions) from the policy repository
 	 * @throws IllegalArgumentException
-	 *             if it (removing this policy) results in an invalid PDP (when referenced directly or indirectly from
-	 *             the root policy)
+	 *             if it (removing this policy) results in an invalid PDP (when referenced directly or indirectly from the root policy)
 	 */
 	NavigableSet<PolicyVersion> removePolicy(String policyId) throws IOException, IllegalArgumentException;
 
@@ -240,8 +233,7 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	 * 
 	 * @param policyVersion
 	 *            policy version ID
-	 * @return DAO for policy version identified by {@code version}, or null if no such policy or no such version of the
-	 *         policy
+	 * @return DAO for policy version identified by {@code version}, or null if no such policy or no such version of the policy
 	 */
 	V getVersionDAOClient(String policyId, PolicyVersion policyVersion);
 
@@ -260,8 +252,7 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	PolicySet getPolicyVersion(String policyId, PolicyVersion versionId) throws IOException;
 
 	/**
-	 * Remove a specific version of the policy from the policy repository. If this is the last remaining version of the
-	 * policy, this must have the same effect as {@link #removePolicy(String)}.
+	 * Remove a specific version of the policy from the policy repository. If this is the last remaining version of the policy, this must have the same effect as {@link #removePolicy(String)}.
 	 * 
 	 * @param policyId
 	 *            policy ID
@@ -272,10 +263,8 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	 * @throws IOException
 	 *             I/O error removing policy version from the policy repository
 	 * @throws IllegalArgumentException
-	 *             if it (removing this policy version) results in an invalid PDP (when referenced directly or
-	 *             indirectly from the root policy)
+	 *             if it (removing this policy version) results in an invalid PDP (when referenced directly or indirectly from the root policy)
 	 */
-	PolicySet removePolicyVersion(String policyId, PolicyVersion versionId) throws IOException,
-			IllegalArgumentException;
+	PolicySet removePolicyVersion(String policyId, PolicyVersion versionId) throws IOException, IllegalArgumentException;
 
 }
