@@ -6,7 +6,7 @@
 		<version>3.3.7</version>
 	</parent>
 	<artifactId>authzforce-ce-core-pap-api</artifactId>
-	<version>5.1.0</version>
+	<version>5.1.1</version>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>AuthZForce CE - Core PAP API</description>
 	<url>https://tuleap.ow2.org/projects/authzforce</url>
@@ -22,7 +22,7 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>${artifactId.prefix}-core-pdp-api</artifactId>
-			<version>3.8.0</version>
+			<version>3.8.1</version>
 		</dependency>
 	</dependencies>
 	<build>
