@@ -1,9 +1,9 @@
 # Change log
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
-## 5.1.1
-### Fixed
-- Current year in license header of dependency authzforce-ce-core-pdp-api
+## 5.2.0
+### Changed
+- Maven POM: authzforce-ce-core-pdp-api dependency version -> 4.0.0
 
 
 ## 5.1.0
