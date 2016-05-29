@@ -22,7 +22,7 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>${artifactId.prefix}-core-pdp-api</artifactId>
-			<version>3.8.0</version>
+			<version>3.8.1</version>
 		</dependency>
 	</dependencies>
 	<build>
