@@ -26,6 +26,11 @@ public class TooManyPoliciesException extends Exception
 {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Constructs an exception
 	 * 
 	 * @param string
@@ -36,10 +41,5 @@ public class TooManyPoliciesException extends Exception
 	{
 		super(string);
 	}
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 }
