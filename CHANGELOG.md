@@ -4,7 +4,7 @@ All notable changes to this project are documented in this file following the [K
 ## Unreleased
 ### Changed
 - Parent project version: authzforce-ce-parent: 3.4.0
-- Dependency version: authzforce-ce-core-pdp-api: 7.1.0
+- Dependency version: authzforce-ce-core-pdp-api: 7.1.1
 
 ## 5.2.1 
 ### Fixed

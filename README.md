@@ -5,7 +5,7 @@ High-level API for implementing and using an Authzforce domain repository DAO (D
 
 ## Support
 
-If you are experiencing problems using AuthzForce, please report your problem on the [OW2 Issue Tracker](https://jira.ow2.org/browse/AUTHZFORCE/).
+If you are experiencing any issue with this project, please report it on the [OW2 Issue Tracker](https://jira.ow2.org/browse/AUTHZFORCE/).
 Please include as much information as possible; the more we know, the better the chance of a quicker resolution:
 
 * Software version
