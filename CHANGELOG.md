@@ -1,6 +1,11 @@
 # Change log
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
+## 5.3.0
+### Changed
+- Parent project version: authzforce-ce-parent: 3.4.0
+- Dependency version: authzforce-ce-core-pdp-api: 7.1.1
+
 ## 5.2.1 
 ### Fixed
 - Issues reported by Codacy
