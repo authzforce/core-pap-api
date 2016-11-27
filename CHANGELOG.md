@@ -1,6 +1,19 @@
 # Change log
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
+
+## Unreleased
+### Added
+- Maven plugin owasp-dependency-check to check vulnerabilities in dependencies 
+
+### Changed
+- Maven parent project version: 3.4.0 -> 4.0.0:
+	- **Java version: 1.7 -> 1.8** (maven.compiler.source/target property)
+
+### Removed
+- Dependency on Koloboke
+
+
 ## 5.3.0
 ### Changed
 - Parent project version: authzforce-ce-parent: 3.4.0
