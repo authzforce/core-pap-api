@@ -2,7 +2,7 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
 
-## Unreleased
+## 6.0.0
 ### Added
 - Maven plugin owasp-dependency-check to check vulnerabilities in dependencies 
 
