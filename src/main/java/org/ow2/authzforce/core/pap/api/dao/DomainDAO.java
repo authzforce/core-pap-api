@@ -65,6 +65,13 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	ReadableDomainProperties setDomainProperties(WritableDomainProperties properties) throws IOException, IllegalArgumentException;
 
 	/**
+	 * Indicates whether the PAP is enabled/supported on this domain
+	 * 
+	 * @return true iff the PAP is enabled/supported on this domain
+	 */
+	boolean isPAPEnabled();
+
+	/**
 	 * Get domain's PDP-specific properties, other than policy references and attribute providers
 	 * 
 	 * @return PDP properties

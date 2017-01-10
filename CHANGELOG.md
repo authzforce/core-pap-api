@@ -2,6 +2,12 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
 
+## 6.1.0
+### Added
+- DomainDAO#isPAPEnabled(): method that returns true iff the DAO supports PAP features. Used for instance to disable PAP features on a frontend server API
+features
+
+
 ## 6.0.0
 ### Added
 - Maven plugin owasp-dependency-check to check vulnerabilities in dependencies 
