@@ -23,7 +23,7 @@ import java.util.Set;
 
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.PolicySet;
 
-import org.ow2.authzforce.core.pdp.api.PDP;
+import org.ow2.authzforce.core.pdp.api.PDPEngine;
 import org.ow2.authzforce.core.pdp.api.policy.PolicyVersion;
 import org.ow2.authzforce.xmlns.pdp.ext.AbstractAttributeProvider;
 
@@ -193,7 +193,7 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	 * 
 	 * @return domain PDP; null if the PDP is in erroneous state
 	 */
-	PDP getPDP();
+	PDPEngine<?> getPDP();
 
 	/**
 	 * Get all versions of the policy ordered from latest to oldest

@@ -2,6 +2,12 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
 
+## 6.3.0
+### Changed
+- Version of parent project (authzforce-ce-parent): 5.0.0 
+- Version of dependency authzforce-ce-core-pdp-api: 9.0.0
+
+
 ## 6.2.0
 ### Changed
 - Parent project version: 4.0.0 -> 4.1.1 
