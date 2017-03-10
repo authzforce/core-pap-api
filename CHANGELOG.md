@@ -2,7 +2,7 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
 
-## Unreleased
+## 6.4.0
 ### Changed
 - License: GPL v3.0 replaced by Apache License v2.0
 - Project URL: https://tuleap.ow2.org/projects/authzforce -> https://authzforce.ow2.org
