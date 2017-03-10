@@ -2,6 +2,15 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
 
+## 6.4.0
+### Changed
+- License: GPL v3.0 replaced by Apache License v2.0
+- Project URL: https://tuleap.ow2.org/projects/authzforce -> https://authzforce.ow2.org
+- GIT repository URL base: https://tuleap.ow2.org/plugins/git/authzforce -> https://gitlab.ow2.org/authzforce
+- Version of parent project (authzforce-ce-parent): 5.1.0 
+- Version of dependency authzforce-ce-core-pdp-api: 9.1.0
+
+
 ## 6.3.0
 ### Changed
 - Version of parent project (authzforce-ce-parent): 5.0.0 
