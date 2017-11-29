@@ -26,8 +26,11 @@ import java.util.NavigableSet;
 import java.util.Set;
 
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.PolicySet;
+import oasis.names.tc.xacml._3_0.core.schema.wd_17.Request;
+import oasis.names.tc.xacml._3_0.core.schema.wd_17.Response;
 
-import org.ow2.authzforce.core.pdp.api.PDPEngine;
+import org.json.JSONObject;
+import org.ow2.authzforce.core.pdp.api.io.PdpEngineInoutAdapter;
 import org.ow2.authzforce.core.pdp.api.policy.PolicyVersion;
 import org.ow2.authzforce.xmlns.pdp.ext.AbstractAttributeProvider;
 
@@ -40,7 +43,7 @@ import org.ow2.authzforce.xmlns.pdp.ext.AbstractAttributeProvider;
  * @param <P>
  *            Domain-specific policy DAO client/consumer implementation class
  */
-public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAOClient>
+public interface DomainDao<V extends PolicyVersionDaoClient, P extends PolicyDaoClient>
 {
 
 	/**
@@ -193,11 +196,20 @@ public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAO
 	P getPolicyDAOClient(String policyId);
 
 	/**
-	 * Get the domain's Policy Decision Point (based on policies and attribute providers)
+	 * Get the domain's Policy Decision Point (based on policies and attribute providers) supporting XACML/XML (JAXB) input/output
 	 * 
 	 * @return domain PDP; null if the PDP is in erroneous state
 	 */
-	PDPEngine<?> getPDP();
+	PdpEngineInoutAdapter<Request, Response> getXacmlJaxbPDP();
+
+	/**
+	 * Get the domain's Policy Decision Point (based on policies and attribute providers) supporting XACML/JSON input/output according to XACML JSON Profile specification at OASIS
+	 * 
+	 * @return domain PDP; null if the PDP is in erroneous state
+	 * @throws UnsupportedOperationException
+	 *             if XACML JSON Profile is not supported
+	 */
+	PdpEngineInoutAdapter<JSONObject, JSONObject> getXacmlJsonPDP() throws UnsupportedOperationException;
 
 	/**
 	 * Get all versions of the policy ordered from latest to oldest

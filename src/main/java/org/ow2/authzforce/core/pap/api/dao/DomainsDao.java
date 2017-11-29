@@ -26,7 +26,7 @@ import java.util.Set;
  * @param <C>
  *            domain
  */
-public interface DomainsDAO<C extends DomainDAOClient<?>>
+public interface DomainsDao<C extends DomainDaoClient<?>>
 {
 
 	/**
@@ -35,7 +35,7 @@ public interface DomainsDAO<C extends DomainDAOClient<?>>
 	 * @param props
 	 *            new domain properties. If the 'rootPolicyRef' element is missing, a default root policy must be
 	 *            automatically created for the domain and a corresponding rootPolicyRef set in the domain properties,
-	 *            so that later calls to {@link DomainDAO#getDomainProperties()} always return a valid 'rootPolicyRef'.
+	 *            so that later calls to {@link DomainDao#getDomainProperties()} always return a valid 'rootPolicyRef'.
 	 *            If the 'rootPolicyRef' element is present in {@code props}, it assumes that the DAO implementation
 	 *            initializes new domains with a fixed set of policies, and the client knows about those policies and
 	 *            therefore how to set the 'rootPolicyRef' properly to match one of those pre-set policies. If this

@@ -2,6 +2,14 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
 
+## 7.0.0
+### Changed
+- Parent project (authzforce-ce-parent) version: 5.1.0 -> 7.0.0
+- Dependency authzforce-ce-core-pdp-api version: 9.1.0 -> 12.0.0
+- Java class naming convention: only first letter in acronym should be uppercase, e.g. DomainDAOClient -> DomainDaoClient
+- DomainDao interface: replaced method getPDP() with getXacmlJaxbPDP and getXacmlJsonPDP to provide both XACML/XML and XACML/JSON in-out PDP adapters, in order to support JSON Profile of XACML
+
+
 ## 6.4.0
 ### Changed
 - License: GPL v3.0 replaced by Apache License v2.0
