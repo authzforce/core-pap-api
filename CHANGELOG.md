@@ -6,8 +6,9 @@ All notable changes to this project are documented in this file following the [K
 ### Changed
 - Parent project (authzforce-ce-parent) version: 5.1.0 -> 7.0.0
 - Dependency authzforce-ce-core-pdp-api version: 9.1.0 -> 12.0.0
-- Java class naming convention: only first letter in acronym should be uppercase, e.g. XACMLVersion -> XacmlVersion
+- Java class naming convention: only first letter in acronym should be uppercase, e.g. DomainDAOClient -> DomainDaoClient
 - DomainDao interface: replaced method getPDP() with getXacmlJaxbPDP and getXacmlJsonPDP to provide both XACML/XML and XACML/JSON in-out PDP adapters, in order to support JSON Profile of XACML
+
 
 ## 6.4.0
 ### Changed
