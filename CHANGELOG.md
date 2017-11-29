@@ -2,6 +2,11 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
 
+## 9.0.0
+### Changed/Fixed
+- Fixed typo in method name DomainsDao#getDomainDaoClient()
+
+
 ## 8.0.0
 ### Changed
 - Applied new Java class naming convention for acronyms on all interface methods
