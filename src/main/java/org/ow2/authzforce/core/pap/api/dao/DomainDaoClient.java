@@ -46,7 +46,7 @@ public interface DomainDaoClient<DAO extends DomainDao<?, ?>>
 		 * 
 		 * @return domain's policy DAO client factory
 		 */
-		PolicyDaoClient.Factory<VERSION_DAO_CLIENT, POLICY_DAO_CLIENT> getPolicyDAOClientFactory();
+		PolicyDaoClient.Factory<VERSION_DAO_CLIENT, POLICY_DAO_CLIENT> getPolicyDaoClientFactory();
 	}
 
 	/**
