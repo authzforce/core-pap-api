@@ -76,7 +76,7 @@ public interface DomainDao<V extends PolicyVersionDaoClient, P extends PolicyDao
 	 * 
 	 * @return true iff the PAP is enabled/supported on this domain
 	 */
-	boolean isPAPEnabled();
+	boolean isPapEnabled();
 
 	/**
 	 * Get domain's PDP-specific properties, other than policy references and attribute providers
@@ -111,7 +111,7 @@ public interface DomainDao<V extends PolicyVersionDaoClient, P extends PolicyDao
 	 *             I/O error getting PRP properties from domain repository
 	 * 
 	 */
-	PrpRWProperties getOtherPrpProperties() throws IOException;
+	PrpRwProperties getOtherPrpProperties() throws IOException;
 
 	/**
 	 * Update domain's PRP-specific properties, other than policies
@@ -126,7 +126,7 @@ public interface DomainDao<V extends PolicyVersionDaoClient, P extends PolicyDao
 	 *             invalid properties
 	 * 
 	 */
-	PrpRWProperties setOtherPrpProperties(PrpRWProperties properties) throws IOException, IllegalArgumentException;
+	PrpRwProperties setOtherPrpProperties(PrpRwProperties properties) throws IOException, IllegalArgumentException;
 
 	/**
 	 * Remove the domain from the domain repository
@@ -169,7 +169,7 @@ public interface DomainDao<V extends PolicyVersionDaoClient, P extends PolicyDao
 	 * @throws IOException
 	 *             I/O error getting list of policies from domain repository
 	 */
-	Set<String> getPolicyIDs() throws IOException;
+	Set<String> getPolicyIdentifiers() throws IOException;
 
 	/**
 	 * Add policy to the domain's policy repository
@@ -193,14 +193,14 @@ public interface DomainDao<V extends PolicyVersionDaoClient, P extends PolicyDao
 	 *            policy ID
 	 * @return DAO for policy identified by {@code policyId} in the domain, or null if no such policy in the domain
 	 */
-	P getPolicyDAOClient(String policyId);
+	P getPolicyDaoClient(String policyId);
 
 	/**
 	 * Get the domain's Policy Decision Point (based on policies and attribute providers) supporting XACML/XML (JAXB) input/output
 	 * 
 	 * @return domain PDP; null if the PDP is in erroneous state
 	 */
-	PdpEngineInoutAdapter<Request, Response> getXacmlJaxbPDP();
+	PdpEngineInoutAdapter<Request, Response> getXacmlJaxbPdp();
 
 	/**
 	 * Get the domain's Policy Decision Point (based on policies and attribute providers) supporting XACML/JSON input/output according to XACML JSON Profile specification at OASIS
@@ -209,7 +209,7 @@ public interface DomainDao<V extends PolicyVersionDaoClient, P extends PolicyDao
 	 * @throws UnsupportedOperationException
 	 *             if XACML JSON Profile is not supported
 	 */
-	PdpEngineInoutAdapter<JSONObject, JSONObject> getXacmlJsonPDP() throws UnsupportedOperationException;
+	PdpEngineInoutAdapter<JSONObject, JSONObject> getXacmlJsonPdp() throws UnsupportedOperationException;
 
 	/**
 	 * Get all versions of the policy ordered from latest to oldest
@@ -258,7 +258,7 @@ public interface DomainDao<V extends PolicyVersionDaoClient, P extends PolicyDao
 	 *            policy version ID
 	 * @return DAO for policy version identified by {@code version}, or null if no such policy or no such version of the policy
 	 */
-	V getVersionDAOClient(String policyId, PolicyVersion policyVersion);
+	V getVersionDaoClient(String policyId, PolicyVersion policyVersion);
 
 	/**
 	 * Get policy version

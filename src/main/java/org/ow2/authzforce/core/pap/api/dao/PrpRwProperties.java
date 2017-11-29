@@ -24,7 +24,7 @@ package org.ow2.authzforce.core.pap.api.dao;
  * PRP (Policy Repository) properties
  *
  */
-public interface PrpRWProperties
+public interface PrpRwProperties
 {
 
 	/**

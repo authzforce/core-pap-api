@@ -54,5 +54,5 @@ public interface DomainDaoClient<DAO extends DomainDao<?, ?>>
 	 *
 	 * @return domain-specific DAO
 	 */
-	DAO getDAO();
+	DAO getDao();
 }

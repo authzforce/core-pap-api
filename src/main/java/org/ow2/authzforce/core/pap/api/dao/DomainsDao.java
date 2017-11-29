@@ -62,7 +62,7 @@ public interface DomainsDao<C extends DomainDaoClient<?>>
 	 * @throws IOException
 	 *             I/O error getting list of domains from Data layer (domain repository/database)
 	 */
-	Set<String> getDomainIDs(String externalId) throws IOException;
+	Set<String> getDomainIdentifiers(String externalId) throws IOException;
 
 	/**
 	 * Checks whether domain exists in domain repository
@@ -84,6 +84,6 @@ public interface DomainsDao<C extends DomainDaoClient<?>>
 	 * @throws IOException
 	 *             I/O error getting domain data from Data layer (domain repository/database)
 	 */
-	C getDomainDAOClient(String domainId) throws IOException;
+	C ogetDomainDaoClient(String domainId) throws IOException;
 
 }
