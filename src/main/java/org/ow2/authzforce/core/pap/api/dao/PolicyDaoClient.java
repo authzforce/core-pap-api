@@ -36,7 +36,7 @@ public interface PolicyDaoClient
 	{
 		POLICY_DAO_CLIENT getInstance(String policyId, DomainDao<VERSION_DAO_CLIENT, ?> domainDAO);
 
-		PolicyVersionDaoClient.Factory<VERSION_DAO_CLIENT> getVersionDAOClientFactory();
+		PolicyVersionDaoClient.Factory<VERSION_DAO_CLIENT> getVersionDaoClientFactory();
 	}
 
 }

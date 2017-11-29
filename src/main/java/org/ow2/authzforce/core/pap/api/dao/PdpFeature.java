@@ -53,7 +53,7 @@ public class PdpFeature
 	 * 
 	 * @return feature ID
 	 */
-	public String getID()
+	public String getId()
 	{
 		return this.id;
 	}
