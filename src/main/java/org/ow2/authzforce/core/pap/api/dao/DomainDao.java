@@ -43,7 +43,7 @@ import org.ow2.authzforce.xmlns.pdp.ext.AbstractAttributeProvider;
  * @param <P>
  *            Domain-specific policy DAO client/consumer implementation class
  */
-public interface DomainDAO<V extends PolicyVersionDAOClient, P extends PolicyDAOClient>
+public interface DomainDao<V extends PolicyVersionDaoClient, P extends PolicyDaoClient>
 {
 
 	/**

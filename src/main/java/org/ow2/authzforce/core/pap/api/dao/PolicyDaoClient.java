@@ -21,7 +21,7 @@ package org.ow2.authzforce.core.pap.api.dao;
  * Policy DAO client/consumer
  *
  */
-public interface PolicyDAOClient// <DAO extends DomainDAO<?, ?>>
+public interface PolicyDaoClient
 {
 	/**
 	 * Policy DAO client factory
@@ -32,11 +32,11 @@ public interface PolicyDAOClient// <DAO extends DomainDAO<?, ?>>
 	 * @param <POLICY_DAO_CLIENT>
 	 *            policy DAO client implementation class
 	 */
-	interface Factory<VERSION_DAO_CLIENT extends PolicyVersionDAOClient, POLICY_DAO_CLIENT extends PolicyDAOClient>
+	interface Factory<VERSION_DAO_CLIENT extends PolicyVersionDaoClient, POLICY_DAO_CLIENT extends PolicyDaoClient>
 	{
-		POLICY_DAO_CLIENT getInstance(String policyId, DomainDAO<VERSION_DAO_CLIENT, ?> domainDAO);
+		POLICY_DAO_CLIENT getInstance(String policyId, DomainDao<VERSION_DAO_CLIENT, ?> domainDAO);
 
-		PolicyVersionDAOClient.Factory<VERSION_DAO_CLIENT> getVersionDAOClientFactory();
+		PolicyVersionDaoClient.Factory<VERSION_DAO_CLIENT> getVersionDAOClientFactory();
 	}
 
 }
