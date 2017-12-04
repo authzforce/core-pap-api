@@ -2,6 +2,15 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
 
+## 9.1.0
+### Changed
+- Parent project (authzforce-ce-parent) version: 7.0.0 -> 7.1.0:
+	Managed dependency versions:
+	- json: 20170516 -> 20171018
+	- authzforce-ce-core-pdp-api version: 12.0.0 -> 12.1.0
+		- guava: 21.0 -> 22.0
+
+
 ## 9.0.0
 ### Changed/Fixed
 - Fixed typo in method name DomainsDao#getDomainDaoClient()
