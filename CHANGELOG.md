@@ -2,6 +2,13 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
 
+## 9.2.0
+### Changed
+- Parent project (authzforce-ce-parent / authzforce-ce-xacml-model / authzforce-ce-pdp-ext-model) version: 7.3.0
+- authzforce-ce-core-pdp-api version: 15.2.0
+- License headers updated for current year 2018
+
+
 ## 9.1.0
 ### Changed
 - Parent project (authzforce-ce-parent) version: 7.0.0 -> 7.1.0:
