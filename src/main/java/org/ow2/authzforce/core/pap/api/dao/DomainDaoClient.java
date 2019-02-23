@@ -1,5 +1,5 @@
 /**
- * Copyright 2012-2018 Thales Services SAS.
+ * Copyright 2012-2019 THALES.
  *
  * This file is part of AuthzForce CE.
  *
@@ -17,6 +17,9 @@
  */
 package org.ow2.authzforce.core.pap.api.dao;
 
+import java.io.Closeable;
+import java.io.IOException;
+
 /**
  * Domain-specific DAO client/consumer
  * 
@@ -26,6 +29,16 @@ package org.ow2.authzforce.core.pap.api.dao;
  */
 public interface DomainDaoClient<DAO extends DomainDao<?, ?>>
 {
+	/**
+	 * Domain-specific DAO builder
+	 *
+	 * @param <DAO>
+	 */
+	interface Builder<DAO>
+	{
+		DAO build() throws IOException;
+	}
+
 	/**
 	 * Domain-specific DAO client factory
 	 * 
@@ -39,7 +52,19 @@ public interface DomainDaoClient<DAO extends DomainDao<?, ?>>
 	 */
 	interface Factory<VERSION_DAO_CLIENT extends PolicyVersionDaoClient, POLICY_DAO_CLIENT extends PolicyDaoClient, DOMAIN_DAO extends DomainDao<?, ?>, DOMAIN_DAO_CLIENT extends DomainDaoClient<DOMAIN_DAO>>
 	{
-		DOMAIN_DAO_CLIENT getInstance(String domainId, DOMAIN_DAO domainDAO);
+		/**
+		 * Create instance of domain-specific DAO client
+		 * 
+		 * @param domainId
+		 *            domain ID
+		 * @param domainDaoBuilder
+		 *            domain DAO builder. {@link DomainDao} is {@link Closeable}, so the created instance should be responsible for managing its lifecycle from instantiation to closure, to prevent
+		 *            resource leak.
+		 * @return domain-specific DAO client
+		 * @throws IOException
+		 *             I/O exception creating the backend DAO
+		 */
+		DOMAIN_DAO_CLIENT getInstance(String domainId, Builder<DOMAIN_DAO> domainDaoBuilder) throws IOException;
 
 		/**
 		 * Get domain policy DAO client factory

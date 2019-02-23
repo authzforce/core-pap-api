@@ -1,5 +1,5 @@
 /**
- * Copyright 2012-2018 Thales Services SAS.
+ * Copyright 2012-2019 THALES.
  *
  * This file is part of AuthzForce CE.
  *
@@ -20,19 +20,19 @@
  */
 package org.ow2.authzforce.core.pap.api.dao;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.util.List;
 import java.util.NavigableSet;
 import java.util.Set;
 
+import org.json.JSONObject;
+import org.ow2.authzforce.core.pdp.api.policy.PolicyVersion;
+import org.ow2.authzforce.xmlns.pdp.ext.AbstractAttributeProvider;
+
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.PolicySet;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.Request;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.Response;
-
-import org.json.JSONObject;
-import org.ow2.authzforce.core.pdp.api.io.PdpEngineInoutAdapter;
-import org.ow2.authzforce.core.pdp.api.policy.PolicyVersion;
-import org.ow2.authzforce.xmlns.pdp.ext.AbstractAttributeProvider;
 
 /**
  * Domain DAO
@@ -43,7 +43,7 @@ import org.ow2.authzforce.xmlns.pdp.ext.AbstractAttributeProvider;
  * @param <P>
  *            Domain-specific policy DAO client/consumer implementation class
  */
-public interface DomainDao<V extends PolicyVersionDaoClient, P extends PolicyDaoClient>
+public interface DomainDao<V extends PolicyVersionDaoClient, P extends PolicyDaoClient> extends Closeable
 {
 
 	/**
@@ -196,22 +196,6 @@ public interface DomainDao<V extends PolicyVersionDaoClient, P extends PolicyDao
 	P getPolicyDaoClient(String policyId);
 
 	/**
-	 * Get the domain's Policy Decision Point (based on policies and attribute providers) supporting XACML/XML (JAXB) input/output
-	 * 
-	 * @return domain PDP; null if the PDP is in erroneous state
-	 */
-	PdpEngineInoutAdapter<Request, Response> getXacmlJaxbPdp();
-
-	/**
-	 * Get the domain's Policy Decision Point (based on policies and attribute providers) supporting XACML/JSON input/output according to XACML JSON Profile specification at OASIS
-	 * 
-	 * @return domain PDP; null if the PDP is in erroneous state
-	 * @throws UnsupportedOperationException
-	 *             if XACML JSON Profile is not supported
-	 */
-	PdpEngineInoutAdapter<JSONObject, JSONObject> getXacmlJsonPdp() throws UnsupportedOperationException;
-
-	/**
 	 * Get all versions of the policy ordered from latest to oldest
 	 * 
 	 * @param policyId
@@ -289,5 +273,37 @@ public interface DomainDao<V extends PolicyVersionDaoClient, P extends PolicyDao
 	 *             if it (removing this policy version) results in an invalid PDP (when referenced directly or indirectly from the root policy)
 	 */
 	PolicySet removePolicyVersion(String policyId, PolicyVersion versionId) throws IOException, IllegalArgumentException;
+
+	/**
+	 * Check whether the PDP supports XACML/XML (JAXB) input/output according to XACML 3.0 core specification
+	 * 
+	 * @return true iff {@link #evaluatePolicyDecision(Request)} is supported
+	 */
+	boolean isXacmlXmlSupported();
+
+	/**
+	 * Check whether the PDP supports XACML/JSON input/output according to XACML JSON Profile 1.0 specification at OASIS
+	 * 
+	 * @return true iff {@link #evaluatePolicyDecision(JSONObject)} is supported
+	 */
+	boolean isXacmlJsonSupported();
+
+	/**
+	 * @param request
+	 *            XACML (JAXB) Request
+	 * @return XACML (JAXB) Response
+	 * @throws UnsupportedOperationException
+	 *             if XACML/XML input/output is not supported
+	 */
+	Response evaluatePolicyDecision(Request request) throws UnsupportedOperationException;
+
+	/**
+	 * @param request
+	 *            XACML/JSON Request
+	 * @return XACML/JSON Response
+	 * @throws UnsupportedOperationException
+	 *             if XACML/JSON input/output according to JSON Profile is not supported
+	 */
+	JSONObject evaluatePolicyDecision(JSONObject request) throws UnsupportedOperationException;
 
 }
