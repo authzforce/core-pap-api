@@ -2,6 +2,20 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
 
+## 10.0.0
+### Changed
+- DomainDao API: 
+	- Now extends `Closeable`, because some DAO implementations hold resources to be closed when done.
+	- Replaced `getXacmlJaxbPdp()` and `getXacmlJsonPdp()` with: `isXacmlXmlSupported()`/`isXacmlJsonSupported()` and `evaluatePolicyDecision(Request)`/`evaluatePolicyDecision(JSONObject)`, to respect OOP encapsulation principles.
+- DomainDaoClient.Factory API: `getInstance(String, DOMAIN_DAO)` replaced with `getInstance(String, Builder<DOMAIND_DAO>)`; so that only the created `DomainDaoClient` instance owns the reference to the `DOMAIN_DAO` instance internally created (from the `Builder`), to better manage potential resource leaks since now `DomainDao` extends `Closeable`.
+- Parent project (authzforce-ce-parent / authzforce-ce-xacml-model / authzforce-ce-pdp-ext-model) version: 7.5.1
+- Dependencies: 
+	- authzforce-ce-core-pdp-api version: 15.3.0
+		- Guava: 24.1.1-jre
+		- Dependency mailapi replaced with javax.mail-api: v1.6.0
+- License headers updated for current year 2019
+
+
 ## 9.2.0
 ### Changed
 - Parent project (authzforce-ce-parent / authzforce-ce-xacml-model / authzforce-ce-pdp-ext-model) version: 7.3.0
