@@ -2,6 +2,12 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
 
+## 10.1.0
+### Changed
+- Upgraded parent project: 7.6.1
+- Upgraded dependency authzforce-ce-core-pdp-api: 17.0.0
+
+
 ## 10.0.0
 ### Changed
 - DomainDao API: 
