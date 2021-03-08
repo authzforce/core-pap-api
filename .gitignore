@@ -5,3 +5,5 @@
 /.pmdruleset.xml
 /.pmd
 /.CHANGELOG.md.html
+/.idea/
+*.iml

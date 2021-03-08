@@ -2,6 +2,16 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
 
+## Unreleased
+### Changed
+- Upgraded project parent version: 8.0.0
+- Upgraded to Java 11 (Java 8 no longer supported)
+- Upgraded dependency authzforce-ce-core-pdp-api: 18.0.1
+
+### Fixed
+- Issue raised on AuthzForce Server project: authzforce/server#62
+
+
 ## 10.1.0
 ### Changed
 - Upgraded parent project: 7.6.1
