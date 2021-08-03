@@ -2,6 +2,14 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
 
+## 11.0.1
+### Fixed
+- CVE-2021-22118: updated parent version to 8.0.2 -> Spring version to 5.2.15
+- Dependency fixes:
+  - Upgraded dependency authzforce-ce-core-pdp-api to v18.0.2
+    - Upgraded javax.mailapi to 1.6.2
+
+
 ## 11.0.0
 ### Changed
 - Upgraded project parent version: 8.0.0
