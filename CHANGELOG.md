@@ -2,6 +2,27 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
 
+## 12.0.0
+### Changed
+- New `AuthzPolicy` interface replacing (XACML-schema-derived JAXB-annotated) `PolicySet` in API operations, as a more generic policy type.
+- Upgraded parent project version (authzforce-ce-parent) to 8.2.1
+
+  - Upgraded SLF4j to 1.7.32
+  - Upgraded Saxon-HE to 10.6
+  - Upgraded Guava to 31.0
+  - Upgraded org.json:json to 20211205
+- Upgraded compile dependency authzforce-ce-core-pdp-api to 21.2.0
+
+  - Improved support of Multiple Decision Profile in following PDP extensions: Combining Algorithm, Function, Attribute Provider, Policy Provider (new methods and new optional `EvaluationContext` parameter for the MDP evaluation context).
+  - Feature: XPath variables in xPathExpression `AttributeValue`s' XPath expressions can now be defined by XACML `VariableDefinition`s (variable name used as `XACML VariableId`), which means XACML Variables can be used as XPath variables there.
+  - Changed Datatype extension (`AttributeValueFactory`) , `EvaluationContext`, `VariableReference` and `ExpressionFactory` interfaces to better support above feature and XPath evaluation in general
+  - Changed Request preprocessor interface.
+  - New `XMLUtils.SAXBasedXmlnsFilteringParser` class constructor parameter - XML namespace prefix-to-URI mappings - to help fix the issue authzforce/server#66 .
+
+### Added
+- `JaxbXacmlAuthzPolicy` class as default `AuthzPolicy` implementation based on schema-derived JAXB-annotated `PolicySet` class
+
+
 ## 11.0.1
 ### Fixed
 - CVE-2021-22118: updated parent version to 8.0.2 -> Spring version to 5.2.15
