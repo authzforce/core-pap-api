@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2021 THALES.
+ * Copyright 2012-2022 THALES.
  *
  * This file is part of AuthzForce CE.
  *
@@ -17,19 +17,17 @@
  */
 package org.ow2.authzforce.core.pap.api.dao;
 
+import oasis.names.tc.xacml._3_0.core.schema.wd_17.Request;
+import oasis.names.tc.xacml._3_0.core.schema.wd_17.Response;
+import org.json.JSONObject;
+import org.ow2.authzforce.core.pdp.api.policy.PolicyVersion;
+import org.ow2.authzforce.xmlns.pdp.ext.AbstractAttributeProvider;
+
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.List;
 import java.util.NavigableSet;
 import java.util.Set;
-
-import org.json.JSONObject;
-import org.ow2.authzforce.core.pdp.api.policy.PolicyVersion;
-import org.ow2.authzforce.xmlns.pdp.ext.AbstractAttributeProvider;
-
-import oasis.names.tc.xacml._3_0.core.schema.wd_17.PolicySet;
-import oasis.names.tc.xacml._3_0.core.schema.wd_17.Request;
-import oasis.names.tc.xacml._3_0.core.schema.wd_17.Response;
 
 /**
  * Domain DAO
@@ -172,7 +170,7 @@ public interface DomainDao<V extends PolicyVersionDaoClient, P extends PolicyDao
 	 * Add policy to the domain's policy repository
 	 * 
 	 * @param policy
-	 *            XACML PolicySet
+	 *            Authorization Policy (e.g. XACML PolicySet)
 	 * @return Policy already existing with same ID/Version in the domain's policy repository, if any (conflict); or null if there isn't any (no conflict)
 	 * @throws IOException
 	 *             I/O error adding policy to domain in domain repository
@@ -181,7 +179,7 @@ public interface DomainDao<V extends PolicyVersionDaoClient, P extends PolicyDao
 	 * @throws TooManyPoliciesException
 	 *             max allowed number of policies is already reached
 	 */
-	PolicySet addPolicy(PolicySet policy) throws IOException, IllegalArgumentException, TooManyPoliciesException;
+	AuthzPolicy addPolicy(AuthzPolicy policy) throws IOException, IllegalArgumentException, TooManyPoliciesException;
 
 	/**
 	 * Get policy-specific DAO client/consumer
@@ -253,7 +251,7 @@ public interface DomainDao<V extends PolicyVersionDaoClient, P extends PolicyDao
 	 * @throws IOException
 	 *             I/O error getting policy version from the policy repository
 	 */
-	PolicySet getPolicyVersion(String policyId, PolicyVersion versionId) throws IOException;
+	AuthzPolicy getPolicyVersion(String policyId, PolicyVersion versionId) throws IOException;
 
 	/**
 	 * Remove a specific version of the policy from the policy repository. If this is the last remaining version of the policy, this must have the same effect as {@link #removePolicy(String)}.
@@ -269,7 +267,7 @@ public interface DomainDao<V extends PolicyVersionDaoClient, P extends PolicyDao
 	 * @throws IllegalArgumentException
 	 *             if it (removing this policy version) results in an invalid PDP (when referenced directly or indirectly from the root policy)
 	 */
-	PolicySet removePolicyVersion(String policyId, PolicyVersion versionId) throws IOException, IllegalArgumentException;
+	AuthzPolicy removePolicyVersion(String policyId, PolicyVersion versionId) throws IOException, IllegalArgumentException;
 
 	/**
 	 * Check whether the PDP supports XACML/XML (JAXB) input/output according to XACML 3.0 core specification
