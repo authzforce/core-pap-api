@@ -1,6 +1,17 @@
 # Change log
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions. This project adheres to [Semantic Versioning](http://semver.org).
 
+## 13.0.0
+### Changed
+- Upgraded authzforce-ce-parent (parent project): 9.1.0:
+
+  - **Migrated to Java 17** (as the minimum required JRE version from now on)
+- Upgraded dependencies:
+
+  - authzforce-ce-core-pdp-api: 22.0.0
+  - org.json:json to 20231013
+  - spotbugs-annotations: 4.7.3
+
 
 ## 12.0.0
 ### Changed
